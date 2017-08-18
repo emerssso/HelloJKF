@@ -12,6 +12,7 @@ pipeline {
 
         stage('Build') {
             steps {
+                currentBuild.result = 'SUCCESS'
                 sh './gradlew clean build'
             }
         }
@@ -21,13 +22,15 @@ pipeline {
         // which must be installed manually
         stage('Firebase test') {
             steps {
-                firebase instrumentation(
-                        app: 'app.apk',
-                        test: 'app-test.apk',
-                        device: 'model=Nexus7,version=19,locale=en,orientation=landscape',
-                        environmentVariables: 'coverage=true,coverageFile="/sdcard/coverage.ec',
-                        directoriesToPull: '/sdcard'
-                )
+                firebaseTest credentialsId: 'HelloJKF',
+                        command: instrumentation(
+                                app: 'app.apk',
+                                test: 'app-test.apk',
+                                device: 'model=Nexus7,version=19,locale=en,orientation=landscape',
+                                environmentVariables: 'coverage=true,coverageFile="/sdcard/coverage.ec',
+                                directoriesToPull: '/sdcard',
+                                autoGoogleLogin: true
+                        )
             }
             post {
                 always {
