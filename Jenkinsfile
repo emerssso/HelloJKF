@@ -19,11 +19,11 @@ pipeline {
 
         stage('Firebase test') {
             steps {
+                sh 'gcloud config set project hellojfk-a9b41'
                 /*
                 // this stage use's the plugin at
                 // https://github.com/SimpleFinance/jenkins-firebase-test-plugin
                 // which must be installed manually
-                sh 'gcloud config set project hellojfk-a9b41'
                 firebaseTest credentialsId: 'HelloJKF',
                         command: instrumentation(
                                 app: 'app/build/outputs/apk/app-debug.apk',
