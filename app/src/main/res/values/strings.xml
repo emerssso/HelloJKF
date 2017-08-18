@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">HelloJKF</string>
+    <string name="hello_hello">Hello Jenkins! Hello Kubernetes! Hello Firebase!</string>
+</resources>
