@@ -26,8 +26,11 @@ pipeline {
                         command: instrumentation(
                                 app: 'app.apk',
                                 test: 'app-test.apk',
-                                device: 'model=Nexus7,version=19,locale=en,orientation=landscape',
-                                environmentVariables: 'coverage=true,coverageFile="/sdcard/coverage.ec',
+                                device: [device(model: 'Nexus7',
+                                        version: '19',
+                                        orientation: 'landscape',
+                                        locale: 'en')],
+                                environmentVariables: 'coverage=true,coverageFile="/sdcard/coverage.ec"',
                                 directoriesToPull: '/sdcard',
                                 autoGoogleLogin: true
                         )
