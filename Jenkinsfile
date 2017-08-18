@@ -28,7 +28,7 @@ pipeline {
                                 app: 'app/build/outputs/apk/app-debug.apk',
                                 test: 'app/build/outputs/apk/app-debug-androidTest.apk',
                                 device: [device(model: 'Nexus7',
-                                        version: '23',
+                                        version: '22',
                                         orientation: 'landscape',
                                         locale: 'en')],
                                 environmentVariables: 'coverage=true,coverageFile="/sdcard/coverage.ec"',
