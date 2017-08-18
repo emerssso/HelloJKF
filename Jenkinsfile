@@ -22,6 +22,7 @@ pipeline {
         // which must be installed manually
         stage('Firebase test') {
             steps {
+                sh 'gcloud config set project hellojfk-a9b41'
                 firebaseTest credentialsId: 'HelloJKF',
                         command: instrumentation(
                                 app: 'app.apk',
