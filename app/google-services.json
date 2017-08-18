@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "534585723152",
+    "firebase_url": "https://hellojfk-a9b41.firebaseio.com",
+    "project_id": "hellojfk-a9b41",
+    "storage_bucket": "hellojfk-a9b41.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:534585723152:android:be8edb8ba47eeabd",
+        "android_client_info": {
+          "package_name": "com.emerssso.hellojkf"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "534585723152-revj105ph92cn1akudfbsen2mkc9637g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAv0hNV5h4AmERlh01kBqaztYH1NQw6im4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
