@@ -19,8 +19,12 @@ pipeline {
 
         stage('Firebase test') {
             steps {
-                sh 'export CLOUDSDK_CONTAINER_USE_CLIENT_CERTIFICATE=True'
-                sh 'gcloud config set project hellojfk-a9b41'
+
+                withCredentials([usernamePassword(credentialsId: 'source:HelloJKF',
+                        passwordVariable: 'pass', usernameVariable: 'name')]) {
+                    sh "$pass | gcloud auth activate-service-account $name --prompt-for-password"
+                    sh 'gcloud config set project hellojfk-a9b41'
+                }
                 /*
                 // this stage use's the plugin at
                 // https://github.com/SimpleFinance/jenkins-firebase-test-plugin
