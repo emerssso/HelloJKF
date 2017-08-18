@@ -13,7 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                 script { currentBuild.result = 'SUCCESS' }
-                sh './gradlew clean build'
+                sh './gradlew clean build assembleAndroidTest'
             }
         }
 
