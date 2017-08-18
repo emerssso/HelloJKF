@@ -19,7 +19,7 @@ pipeline {
 
         stage('Firebase test') {
             steps {
-                sh 'gcloud init'
+                sh 'export CLOUDSDK_CONTAINER_USE_CLIENT_CERTIFICATE=True'
                 sh 'gcloud config set project hellojfk-a9b41'
                 /*
                 // this stage use's the plugin at
