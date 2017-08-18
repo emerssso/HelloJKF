@@ -19,6 +19,7 @@ pipeline {
 
         stage('Firebase test') {
             steps {
+                sh 'gcloud init'
                 sh 'gcloud config set project hellojfk-a9b41'
                 /*
                 // this stage use's the plugin at
