@@ -25,8 +25,8 @@ pipeline {
                 sh 'gcloud config set project hellojfk-a9b41'
                 firebaseTest credentialsId: 'HelloJKF',
                         command: instrumentation(
-                                app: 'app/build.outputs/apk/app-debug.apk',
-                                test: 'app/build.outputs/apk/app-test.apk',
+                                app: 'app/build/outputs/apk/app-debug.apk',
+                                test: 'app/build/outputs/apk/app-debug-androidTest.apk',
                                 device: [device(model: 'Nexus7',
                                         version: '19',
                                         orientation: 'landscape',
