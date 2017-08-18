@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'jacoco'
 
 android {
     compileSdkVersion 25
@@ -16,6 +17,30 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            testCoverageEnabled true
+        }
+    }
+
+    testOptions {
+        unitTests.all {
+            jacoco {
+                includeNoLocationClasses = true
+            }
+        }
+        unitTests.returnDefaultValues = true
+        unitTests.all {
+            if (it.name == 'testDebugUnitTest') {
+                it.ignoreFailures = true
+            }
+        }
+    }
+}
+
+tasks.whenTaskAdded { task ->
+    //System.out.println("Added: " + task.name + ": " + task.class)
+    if (task.name == "connectedDebugAndroidTest") {
+        task.ignoreFailures = true
     }
 }
 
