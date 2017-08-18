@@ -12,7 +12,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                currentBuild.result = 'SUCCESS'
+                script { currentBuild.result = 'SUCCESS' }
                 sh './gradlew clean build'
             }
         }
