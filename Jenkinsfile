@@ -23,11 +23,14 @@ pipeline {
                 // this stage use's the plugin at
                 // https://github.com/SimpleFinance/jenkins-firebase-test-plugin
                 // which must be installed manually
+                tool name: 'gcloud-tool-name', type: 'com.cloudbees.jenkins.plugins.gcloudsdk.GCloudInstallation'
                 firebaseTest credentialsId: 'HelloJKF3',
+                        gcloud: "${tool 'gcloud-tool-name'}/bin/gcloud",
                         command: instrumentation(
                                 app: 'app/build/outputs/apk/app-debug.apk',
                                 test: 'app/build/outputs/apk/app-debug-androidTest.apk',
-                                device: [device(model: 'Nexus7',
+                                device: [device(
+                                        model: 'Nexus7',
                                         version: '22',
                                         orientation: 'landscape',
                                         locale: 'en')],
