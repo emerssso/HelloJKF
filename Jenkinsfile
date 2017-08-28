@@ -20,12 +20,6 @@ pipeline {
         stage('Firebase test') {
             steps {
 
-                withCredentials([usernamePassword(credentialsId: 'source:HelloJKF',
-                        passwordVariable: 'pass', usernameVariable: 'name')]) {
-                    sh "$pass | gcloud auth activate-service-account $name --prompt-for-password"
-                    sh 'gcloud config set project hellojfk-a9b41'
-                }
-                /*
                 // this stage use's the plugin at
                 // https://github.com/SimpleFinance/jenkins-firebase-test-plugin
                 // which must be installed manually
@@ -40,25 +34,8 @@ pipeline {
                                 environmentVariables: 'coverage=true,coverageFile="/sdcard/coverage.ec"',
                                 directoriesToPull: '/sdcard',
                                 autoGoogleLogin: true
+                                resultsDir: "test-results/jenkins/$BUILD_NUMBER"
                         )
-                */
-
-                sh """
-                gcloud beta firebase test android run \\
-                    --type instrumentation \\
-                    --app app/build/outputs/apk/app-debug.apk \\
-                    --test app/build/outputs/apk/app-debug-androidTest.apk  \\
-                    --device-ids Nexus7 \\
-                    --os-version-ids 22  \\
-                    --locales en  \\
-                    --orientations landscape \\
-                    --environment-variables coverage=true,coverageFile="/sdcard/coverage.ec" \\
-                    --directories-to-pull=/sdcard \\
-                    --results-dir=test-results/jenkins/
-                """ + "$BUILD_NUMBER"
-
-                sh "mkdir .firebase"
-                sh "gsutil cp -r  gs://test-lab-5pthyuufc15kk-ka66n638cs6f4/test-results/jenkins/$BUILD_NUMBER/Nexus7-22-en-landscape/*.xml .firebase"
             }
             post {
                 always {
