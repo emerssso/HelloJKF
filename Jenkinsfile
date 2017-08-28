@@ -33,7 +33,7 @@ pipeline {
                                         locale: 'en')],
                                 environmentVariables: 'coverage=true,coverageFile="/sdcard/coverage.ec"',
                                 directoriesToPull: '/sdcard',
-                                autoGoogleLogin: true
+                                autoGoogleLogin: true,
                                 resultsDir: "test-results/jenkins/$BUILD_NUMBER"
                         )
             }
