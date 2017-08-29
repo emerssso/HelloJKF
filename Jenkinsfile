@@ -23,7 +23,7 @@ pipeline {
                 // this stage use's the plugin at
                 // https://github.com/SimpleFinance/jenkins-firebase-test-plugin
                 // which must be installed manually
-                firebaseTest credentialsId: 'HelloJKF3',
+                firebaseTest credentialsId: 'HelloJKF',
                         gcloud: "${tool name: 'gcs'}/bin/gcloud",
                         command: instrumentation(
                                 app: 'app/build/outputs/apk/app-debug.apk',
