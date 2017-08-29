@@ -23,6 +23,7 @@ pipeline {
                 // this stage use's the plugin at
                 // https://github.com/SimpleFinance/jenkins-firebase-test-plugin
                 // which must be installed manually
+                sh "${ tool name: 'gcs'}/bin/gcloud config set project hellojfk-a9b41"
                 firebaseTest credentialsId: 'HelloJKF',
                         gcloud: "${tool name: 'gcs'}/bin/gcloud",
                         command: instrumentation(
