@@ -52,13 +52,4 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            echo "Build completed. currentBuild.result = ${currentBuild.result}"
-            sh "./gradlew --stop"
-
-            deleteDir()
-        }
-    }
 }
