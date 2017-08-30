@@ -34,8 +34,6 @@ pipeline {
                                         version: '22',
                                         orientation: 'landscape',
                                         locale: 'en')],
-                                environmentVariables: 'coverage=true,coverageFile="/sdcard/coverage.ec"',
-                                directoriesToPull: '/sdcard',
                                 autoGoogleLogin: true
                         )
             }
