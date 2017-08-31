@@ -28,6 +28,7 @@ pipeline {
                 }
 
                 sh "${tool name: 'gcs'}/bin/gcloud config set project hellojfk-a9b41"
+                sh "${tool name: 'gcs'}/bin/gcloud components install beta"
 
                 sh "${tool name: 'gcs'}/bin/gcloud beta firebase test android run \\\n" +
                         "--type instrumentation \\\n" +
