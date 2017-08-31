@@ -41,6 +41,11 @@ pipeline {
                         "--results-dir test-results/jenkins/$BUILD_NUMBER " +
                         "--environment-variables coverage=true,coverageFile=\"/sdcard/coverage.ec\" " +
                         "--directories-to-pull=/sdcard"
+
+                sh "mkdir firebase && " +
+                        "${tool name: 'gcs'}/bin/gsutil cp -r " +
+                        "gs://test-lab-5pthyuufc15kk-ka66n638cs6f4/test-results/jenkins/" +
+                        "$BUILD_NUMBER/Nexus6P-25-en-landscape firebase"
                 /*firebaseTest credentialsId: 'HelloJKF',
                         gcloud: "${tool name: 'gcs'}/bin/gcloud",
                         command: instrumentation(
@@ -61,7 +66,7 @@ pipeline {
             post {
                 always {
                     junit allowEmptyResults: true,
-                            testResults: '.firebase/*.xml, **/testDebugUnitTest/TEST-*.xml'
+                            testResults: 'firebase/**/*.xml, **/testDebugUnitTest/TEST-*.xml'
                     jacoco execPattern: '**/**.exec, **/**.ec'
                     androidLint canComputeNew: true,
                             defaultEncoding: '',
