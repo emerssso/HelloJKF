@@ -24,12 +24,12 @@ pipeline {
                 // https://github.com/SimpleFinance/jenkins-firebase-test-plugin
                 // which must be installed manually
                 withCredentials([file(credentialsId: 'HelloJKF-File', variable: 'authfile')]) {
-                    sh "gcloud auth activate-service-account --key-file=$authfile"
+                    sh "${tool name: 'gcs'}/bin/gcloud auth activate-service-account --key-file=$authfile"
                 }
 
-                sh "${ tool name: 'gcs'}/bin/gcloud config set project hellojfk-a9b41"
+                sh "${tool name: 'gcs'}/bin/gcloud config set project hellojfk-a9b41"
 
-                sh "gcloud beta firebase test android run \\\n" +
+                sh "${tool name: 'gcs'}/bin/gcloud beta firebase test android run \\\n" +
                         "--type instrumentation \\\n" +
                         "--app build/outputs/apk/app-debug.apk \\\n" +
                         "--test build/outputs/apk/app-debug-androidTest.apk \\\n" +
