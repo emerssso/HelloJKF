@@ -32,8 +32,8 @@ pipeline {
 
                 sh "${tool name: 'gcs'}/bin/gcloud beta firebase test android run " +
                         "--type instrumentation " +
-                        "--app build/outputs/apk/app-debug.apk " +
-                        "--test build/outputs/apk/app-debug-androidTest.apk " +
+                        "--app app/build/outputs/apk/app-debug.apk " +
+                        "--test app/build/outputs/apk/app-debug-androidTest.apk " +
                         "--device-ids Nexus6P " +
                         "--os-version-ids 25 " +
                         "--locales en " +
