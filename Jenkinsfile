@@ -45,11 +45,11 @@ pipeline {
                 sh "mkdir firebase && " +
                         "${tool name: 'gcs'}/bin/gsutil cp " +
                         "gs://test-lab-5pthyuufc15kk-ka66n638cs6f4/test-results/jenkins/" +
-                        "$BUILD_NUMBER/Nexus6P-25-en-landscape/*.xml firebase"
+                        "$BUILD_NUMBER/Nexus6P-25-en-landscape/*.xml firebase | true"
 
                 sh "${tool name: 'gcs'}/bin/gsutil cp " +
                         "gs://test-lab-5pthyuufc15kk-ka66n638cs6f4/test-results/jenkins/" +
-                        "$BUILD_NUMBER/Nexus6P-25-en-landscape/*.ec firebase"
+                        "$BUILD_NUMBER/Nexus6P-25-en-landscape/*.ec firebase | true"
                 /*firebaseTest credentialsId: 'HelloJKF',
                         gcloud: "${tool name: 'gcs'}/bin/gcloud",
                         command: instrumentation(
