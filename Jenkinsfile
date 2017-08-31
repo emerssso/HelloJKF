@@ -39,7 +39,7 @@ pipeline {
                         "--locales en " +
                         "--orientations landscape " +
                         "--results-dir test-results/jenkins/$BUILD_NUMBER " +
-                        "--environment-variables coverage=true,coverageFile=\"/sdcard/coverage.ec\" ../" +
+                        "--environment-variables coverage=true,coverageFile=\"/sdcard/coverage.ec\" " +
                         "--directories-to-pull=/sdcard"
                 /*firebaseTest credentialsId: 'HelloJKF',
                         gcloud: "${tool name: 'gcs'}/bin/gcloud",
