@@ -34,7 +34,10 @@ pipeline {
                                         version: '22',
                                         orientation: 'landscape',
                                         locale: 'en')],
-                                autoGoogleLogin: true
+                                //environmentVariables: 'coverage=true,coverageFile="/sdcard/coverage.ec"',
+                                //directoriesToPull: '/sdcard',
+                                autoGoogleLogin: true,
+                                resultsDir: "test-results/jenkins/$BUILD_NUMBER"
                         )
             }
             post {
