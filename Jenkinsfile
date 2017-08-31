@@ -43,9 +43,13 @@ pipeline {
                         "--directories-to-pull=/sdcard"
 
                 sh "mkdir firebase && " +
-                        "${tool name: 'gcs'}/bin/gsutil cp -r " +
+                        "${tool name: 'gcs'}/bin/gsutil cp " +
                         "gs://test-lab-5pthyuufc15kk-ka66n638cs6f4/test-results/jenkins/" +
-                        "$BUILD_NUMBER/Nexus6P-25-en-landscape firebase"
+                        "$BUILD_NUMBER/Nexus6P-25-en-landscape/*.xml firebase"
+
+                sh "${tool name: 'gcs'}/bin/gsutil cp " +
+                        "gs://test-lab-5pthyuufc15kk-ka66n638cs6f4/test-results/jenkins/" +
+                        "$BUILD_NUMBER/Nexus6P-25-en-landscape/*.ec firebase"
                 /*firebaseTest credentialsId: 'HelloJKF',
                         gcloud: "${tool name: 'gcs'}/bin/gcloud",
                         command: instrumentation(
