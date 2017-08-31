@@ -30,16 +30,16 @@ pipeline {
                 sh "${tool name: 'gcs'}/bin/gcloud config set project hellojfk-a9b41"
                 sh "${tool name: 'gcs'}/bin/gcloud components install beta"
 
-                sh "${tool name: 'gcs'}/bin/gcloud beta firebase test android run \\\n" +
-                        "--type instrumentation \\\n" +
-                        "--app build/outputs/apk/app-debug.apk \\\n" +
-                        "--test build/outputs/apk/app-debug-androidTest.apk \\\n" +
-                        "--device-ids Nexus6P\\\n" +
-                        "--os-version-ids 25 \\\n" +
-                        "--locales en \\\n" +
-                        "--orientations landscape \\\n" +
-                        "--results-dir test-results/jenkins/$BUILD_NUMBER \\\n" +
-                        "--environment-variables coverage=true,coverageFile=\"/sdcard/coverage.ec\" \\\n" +
+                sh "${tool name: 'gcs'}/bin/gcloud beta firebase test android run " +
+                        "--type instrumentation " +
+                        "--app build/outputs/apk/app-debug.apk " +
+                        "--test build/outputs/apk/app-debug-androidTest.apk " +
+                        "--device-ids Nexus6P " +
+                        "--os-version-ids 25 " +
+                        "--locales en " +
+                        "--orientations landscape " +
+                        "--results-dir test-results/jenkins/$BUILD_NUMBER " +
+                        "--environment-variables coverage=true,coverageFile=\"/sdcard/coverage.ec\" ../" +
                         "--directories-to-pull=/sdcard"
                 /*firebaseTest credentialsId: 'HelloJKF',
                         gcloud: "${tool name: 'gcs'}/bin/gcloud",
